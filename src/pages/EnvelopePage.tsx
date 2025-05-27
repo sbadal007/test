@@ -1,43 +1,28 @@
-// src/pages/EnvelopePage.tsx
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import "./EnvelopePage.css";
 
-interface EnvelopePageProps {
-  onOpen: () => void;
-}
+export default function EnvelopePage() {
+  const navigate = useNavigate();
 
-export function EnvelopePage({ onOpen }: EnvelopePageProps) {
+  const handleClick = () => {
+    setTimeout(() => navigate("/invite"), 1600);
+  };
+
   return (
-    <div className="envelope-wrapper">
+    <div className="envelope-wrapper" onClick={handleClick}>
       <motion.div
         className="envelope"
-        onClick={onOpen}
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        initial={{ rotateX: 0 }}
+        animate={{ rotateX: 180 }}
+        transition={{ duration: 1.5 }}
       >
-        <div className="flap" />
-        <div className="paper">
-          <motion.h2
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            You're Invited!
-          </motion.h2>
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.7 }}
-          >
-            Click to open the wedding invitation
-          </motion.p>
+        <div className="flap"></div>
+        <div className="letter">
+          <h1>You’re Invited!</h1>
+          <p>Tap to reveal your invitation</p>
         </div>
-        <div className="bottom" />
       </motion.div>
-      <p className="click-note">Tap the envelope to reveal love's celebration 💌</p>
     </div>
   );
 }
