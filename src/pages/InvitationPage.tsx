@@ -44,28 +44,28 @@ export function InvitationPage() {
       <img
         src="https://i.ibb.co/p1YykWc/animated-couple.gif"
         alt="Couple"
-        className="animated-couple"
+        className="animated-couple glowing"
       />
       <div className="message">
-        <h1>You Are Cordially Invited</h1>
-        <p>Two hearts. One promise. A lifetime of love.</p>
-        <p>Join us as we say "I do" and begin our forever together.</p>
-        <p>With love, Sita ❤️ Ram</p>
-        <p>Date: 25th September 2025<br />Location: Pokhara, Nepal</p>
-        <h2>Countdown to the Big Day</h2>
-        <p>
+        <h1 className="fade-in">You Are Cordially Invited</h1>
+        <p className="slide-in">Two hearts. One promise. A lifetime of love.</p>
+        <p className="slide-in">Join us as we say "I do" and begin our forever together.</p>
+        <p className="slide-in">With love, Sita ❤️ Ram</p>
+        <p className="slide-in">Date: 25th September 2025<br />Location: Pokhara, Nepal</p>
+        <h2 className="countdown">Countdown to the Big Day</h2>
+        <p className="timer">
           {timeLeft.days} days {timeLeft.hours} hrs {timeLeft.minutes} min {timeLeft.seconds} sec
         </p>
-        <h3>Kindly RSVP below</h3>
+        <h3 className="rsvp-header">Kindly RSVP below</h3>
         <form
           action="https://formspree.io/f/xnndepon"
           method="POST"
-          className="rsvp-form"
+          className="rsvp-form decorated-form"
         >
           <input type="text" name="name" placeholder="Your Name" required />
           <input type="number" name="guests" placeholder="Number of Guests" required />
           <textarea name="message" placeholder="Message (optional)"></textarea>
-          <button type="submit">Submit</button>
+          <button type="submit" className="submit-button">Submit</button>
         </form>
       </div>
     </div>
