@@ -1,63 +1,62 @@
 import "./InvitationPage.css";
 import { PetalRain } from "../components/PetalRain";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 export function InvitationPage() {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
 
   useEffect(() => {
     const targetDate = new Date("2025-09-25T00:00:00");
-    const interval = setInterval(() => {
-      const now = new Date();
-      const diff = targetDate.getTime() - now.getTime();
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / 1000 / 60) % 60);
-      setTimeLeft({ days, hours, minutes });
-    }, 60000);
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate.getTime() - now;
+
+      if (distance < 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / 1000 / 60) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="invite-container">
       <PetalRain />
-
       <audio autoPlay loop>
         <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3" />
       </audio>
-
-      <motion.div
-        className="envelope-wrapper"
-        initial={{ rotateX: 90, opacity: 0 }}
-        animate={{ rotateX: 0, opacity: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-      >
-        <img
-          src="https://i.ibb.co/p1YykWc/animated-couple.gif"
-          alt="Couple"
-          className="animated-couple"
-        />
-      </motion.div>
-
-      <motion.div
-        className="message"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 1 }}
-      >
-        <h1 className="title">💌 You Are Cordially Invited</h1>
-        <p className="subtitle">Two hearts. One promise. A lifetime of love.</p>
-        <p className="details">Join us as we say "I do" and begin our forever together.</p>
-        <p className="names">With love, <span>Sita ❤️ Ram</span></p>
-        <p className="event-info">📅 Date: 25th September 2025<br />📍 Location: Pokhara, Nepal</p>
-
-        <div className="countdown">
-          <h2>⏳ Countdown to the Big Day</h2>
-          <p>{timeLeft.days} days {timeLeft.hours} hrs {timeLeft.minutes} min</p>
-        </div>
-
-        <h3>💍 Kindly RSVP Below</h3>
+      <img
+        src="https://i.ibb.co/p1YykWc/animated-couple.gif"
+        alt="Couple"
+        className="animated-couple"
+      />
+      <div className="message">
+        <h1>You Are Cordially Invited</h1>
+        <p>Two hearts. One promise. A lifetime of love.</p>
+        <p>Join us as we say "I do" and begin our forever together.</p>
+        <p>With love, Sita ❤️ Ram</p>
+        <p>Date: 25th September 2025<br />Location: Pokhara, Nepal</p>
+        <h2>Countdown to the Big Day</h2>
+        <p>
+          {timeLeft.days} days {timeLeft.hours} hrs {timeLeft.minutes} min {timeLeft.seconds} sec
+        </p>
+        <h3>Kindly RSVP below</h3>
         <form
           action="https://formspree.io/f/xnndepon"
           method="POST"
@@ -68,7 +67,7 @@ export function InvitationPage() {
           <textarea name="message" placeholder="Message (optional)"></textarea>
           <button type="submit">Submit</button>
         </form>
-      </motion.div>
+      </div>
     </div>
   );
 }
