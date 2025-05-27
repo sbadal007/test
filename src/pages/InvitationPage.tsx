@@ -6,15 +6,20 @@ export function InvitationPage() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
 
   useEffect(() => {
-    const targetDate = new Date("2025-09-25T00:00:00");
-    const interval = setInterval(() => {
+    const updateCountdown = () => {
+      const targetDate = new Date("2025-09-25T00:00:00");
       const now = new Date();
       const diff = targetDate.getTime() - now.getTime();
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / 1000 / 60) % 60);
+
+      const days = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
+      const hours = Math.max(0, Math.floor((diff / (1000 * 60 * 60)) % 24));
+      const minutes = Math.max(0, Math.floor((diff / 1000 / 60) % 60));
+
       setTimeLeft({ days, hours, minutes });
-    }, 60000);
+    };
+
+    updateCountdown(); // run once immediately
+    const interval = setInterval(updateCountdown, 60000);
     return () => clearInterval(interval);
   }, []);
 
@@ -36,17 +41,18 @@ export function InvitationPage() {
         <p>With love, Sita ❤️ Ram</p>
         <p>Date: 25th September 2025<br />Location: Pokhara, Nepal</p>
         <h2>Countdown to the Big Day</h2>
-        <p>{timeLeft.days} days {timeLeft.hours} hrs {timeLeft.minutes} min</p>
+        <p className="countdown">{timeLeft.days} days {timeLeft.hours} hrs {timeLeft.minutes} min</p>
+
         <h3>Kindly RSVP below</h3>
         <form
           action="https://formspree.io/f/xnndepon"
           method="POST"
           className="rsvp-form"
         >
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="number" name="guests" placeholder="Number of Guests" required />
-          <textarea name="message" placeholder="Message (optional)"></textarea>
-          <button type="submit">Submit</button>
+          <input type="text" name="name" placeholder="Your Name" required className="rsvp-input" />
+          <input type="number" name="guests" placeholder="Number of Guests" required className="rsvp-input" />
+          <textarea name="message" placeholder="Message (optional)" className="rsvp-textarea"></textarea>
+          <button type="submit" className="rsvp-button">Submit</button>
         </form>
       </div>
     </div>
