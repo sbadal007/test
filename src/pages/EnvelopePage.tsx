@@ -22,8 +22,20 @@ export function EnvelopePage() {
       >
         <div className="flap" />
         <div className="paper">
-          <h2>You're Invited!</h2>
-          <p>Click to open the wedding invitation</p>
+          <motion.h2
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            You're Invited!
+          </motion.h2>
+          <motion.p
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.7 }}
+          >
+            Click to open the wedding invitation
+          </motion.p>
         </div>
         <div className="bottom" />
       </motion.div>
