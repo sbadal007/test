@@ -1,21 +1,16 @@
-// src/App.tsx
-import { useState } from "react";
-import { EnvelopePage } from "./pages/EnvelopePage";
+import EnvelopePage from "./pages/EnvelopePage";
 import { InvitationPage } from "./pages/InvitationPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [opened, setOpened] = useState(false);
-
   return (
-    <>
-      {opened ? (
-        <InvitationPage />
-      ) : (
-        <EnvelopePage onOpen={() => setOpened(true)} />
-      )}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<EnvelopePage />} />
+        <Route path="/invite" element={<InvitationPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
 
 export default App;
