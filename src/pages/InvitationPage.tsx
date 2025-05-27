@@ -59,3 +59,39 @@ export function InvitationPage({ language, toggleLanguage }: Props) {
   };
 
   const t = texts[language];
+
+  return (
+    <div className="invite-container">
+      <PetalRain />
+      <button className="lang-toggle" onClick={toggleLanguage}>{t.toggle}</button>
+      <audio autoPlay loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3" />
+      </audio>
+      <img
+        src="https://i.ibb.co/p1YykWc/animated-couple.gif"
+        alt="Couple"
+        className="animated-couple"
+      />
+      <div className="message">
+        <h1>{t.title}</h1>
+        <p>{t.subtitle}</p>
+        <p>{t.details}</p>
+        <p>{t.names}</p>
+        <p>{t.date}<br />{t.location}</p>
+        <h2>{t.countdown}</h2>
+        <p>{timeLeft.days} days {timeLeft.hours} hrs {timeLeft.minutes} min</p>
+        <h3>{t.rsvp}</h3>
+        <form
+          action="https://formspree.io/f/xnndepon"
+          method="POST"
+          className="rsvp-form"
+        >
+          <input type="text" name="name" placeholder={t.name} required />
+          <input type="number" name="guests" placeholder={t.guests} required />
+          <textarea name="message" placeholder={t.message}></textarea>
+          <button type="submit">{t.submit}</button>
+        </form>
+      </div>
+    </div>
+  );
+}
