@@ -4,9 +4,9 @@
   align-items: center;
   height: 100vh;
   padding: 2rem;
+  box-sizing: border-box;
   background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80") center/cover no-repeat;
   cursor: pointer;
-  box-sizing: border-box;
 }
 
 .envelope {
@@ -17,16 +17,20 @@
   border: 3px solid #b76e79;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  perspective: 1000px;
   overflow: hidden;
-  transform-style: preserve-3d;
   transition: transform 0.3s ease;
+}
+
+.envelope.open {
+  transform: scale(1.02);
 }
 
 .envelope:hover {
   transform: scale(1.05);
 }
 
-.envelope .flap {
+.flap {
   position: absolute;
   top: 0;
   width: 100%;
@@ -34,15 +38,15 @@
   background: #fce4ec;
   clip-path: polygon(0 0, 50% 100%, 100% 0);
   transform-origin: top center;
-  transition: transform 1s ease;
-  z-index: 3;
+  transition: transform 1.5s ease;
+  z-index: 2;
 }
 
 .envelope.open .flap {
-  transform: rotateX(-120deg);
+  transform: rotateX(-180deg);
 }
 
-.envelope .letter {
+.letter {
   position: absolute;
   top: 45%;
   width: 100%;
@@ -50,17 +54,15 @@
   font-family: 'Georgia', serif;
   font-size: 1.2rem;
   color: #6a1b4d;
-  z-index: 2;
-  opacity: 1;
-  transition: transform 1s ease, opacity 1s ease;
+  z-index: 3;
 }
 
-.envelope.open .letter {
-  opacity: 0;
-  transform: scale(0.8);
-}
-
-.envelope .front {
+.front {
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 50%;
+  background: #ffffff;
+  border-top: 1px solid #b76e79;
+  z-index: 1;
+}
