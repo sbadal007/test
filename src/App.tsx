@@ -1,15 +1,15 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EnvelopePage from "./pages/EnvelopePage";
 import { InvitationPage } from "./pages/InvitationPage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<EnvelopePage />} />
         <Route path="/invite" element={<InvitationPage />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
