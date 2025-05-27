@@ -10,7 +10,7 @@ function App() {
   const [language, setLanguage] = useState<Language>("en");
 
   const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "en" ? "np" : "en"));
+    setLanguage((prev) => (prev === "en" ? "np": "en"));
   };
   return (
     <div className="App">
