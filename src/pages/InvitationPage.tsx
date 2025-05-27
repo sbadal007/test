@@ -75,7 +75,7 @@ export function InvitationPage({ language, toggleLanguage }) {
         <p>{timeLeft.days} days {timeLeft.hours} hrs {timeLeft.minutes} min</p>
         <h3>{t.rsvp}</h3>
         <form
-          action="https://formspree.io/f/yourFormID" 
+          action="https://formspree.io/f/xnndepon" 
           method="POST"
           className="rsvp-form"
         >
