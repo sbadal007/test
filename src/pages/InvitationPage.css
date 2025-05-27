@@ -55,3 +55,17 @@
     width: 90%;
   }
 }
+.envelope {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  transform-style: preserve-3d;
+}
+
+.animated-couple {
+  max-width: 80%;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
