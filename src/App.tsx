@@ -1,3 +1,4 @@
+// src/App.tsx
 import { useState } from "react";
 import { EnvelopePage } from "./pages/EnvelopePage";
 import { InvitationPage } from "./pages/InvitationPage";

@@ -1,19 +1,17 @@
-import { useNavigate } from "react-router-dom";
+// src/pages/EnvelopePage.tsx
 import { motion } from "framer-motion";
 import "./EnvelopePage.css";
 
-export function EnvelopePage() {
-  const navigate = useNavigate();
+interface EnvelopePageProps {
+  onOpen: () => void;
+}
 
-  const handleClick = () => {
-    setTimeout(() => navigate("/invite"), 1500);
-  };
-
+export function EnvelopePage({ onOpen }: EnvelopePageProps) {
   return (
     <div className="envelope-wrapper">
       <motion.div
         className="envelope"
-        onClick={handleClick}
+        onClick={onOpen}
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1 }}
