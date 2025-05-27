@@ -1,14 +1,24 @@
 import { useState } from "react";
+import "./App.css";
 import { EnvelopePage } from "./pages/EnvelopePage";
 import { InvitationPage } from "./pages/InvitationPage";
 
 function App() {
-  const [opened, setOpened] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [language, setLanguage] = useState("en");
+
+  const toggleLanguage = () => {
+    setLanguage(prev => (prev === "en" ? "np" : "en"));
+  };
 
   return (
-    <>
-      {opened ? <InvitationPage /> : <EnvelopePage onOpen={() => setOpened(true)} />}
-    </>
+    <div className="App">
+      {isOpen ? (
+        <InvitationPage language={language} toggleLanguage={toggleLanguage} />
+      ) : (
+        <EnvelopePage onOpen={() => setIsOpen(true)} />
+      )}
+    </div>
   );
 }
 
