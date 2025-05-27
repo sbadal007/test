@@ -1,25 +1,48 @@
 .invite-container {
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   background: linear-gradient(to bottom right, #fff1f5, #ffe4e6);
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .animated-couple {
-  max-width: 250px;
-  margin-top: 2rem;
+  max-width: 60%;
+  margin: 1.5rem auto;
   animation: pulse 4s infinite;
 }
 
-.message h1 {
+.message {
   font-family: 'Georgia', serif;
+  color: #6a1b4d;
+  padding: 1rem;
+}
+
+.message h1 {
   font-size: 2rem;
   color: #880e4f;
+  margin-bottom: 0.5rem;
 }
 
 .message p {
   font-size: 1.1rem;
-  color: #6a1b4d;
+  margin: 0.5rem 0;
+}
+
+/* Mobile-friendly tweaks */
+@media (max-width: 480px) {
+  .animated-couple {
+    max-width: 90%;
+  }
+
+  .message h1 {
+    font-size: 1.5rem;
+  }
+
+  .message p {
+    font-size: 1rem;
+  }
 }
 
 @keyframes pulse {
