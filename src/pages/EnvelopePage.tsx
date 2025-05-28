@@ -12,7 +12,8 @@ export default function EnvelopePage({ onOpen }: { onOpen: () => void }) {
       setTimeout(onOpen, 1600);
     }
   };
- return (
+
+  return (
     <div className="envelope-wrapper" onClick={handleOpen}>
       <div className="envelope">
         <motion.div
@@ -30,4 +31,3 @@ export default function EnvelopePage({ onOpen }: { onOpen: () => void }) {
     </div>
   );
 }
-
