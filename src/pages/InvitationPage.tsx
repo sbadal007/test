@@ -49,8 +49,8 @@ export default function InvitationPage() {
           transition={{ duration: 1, delay: 0.5 }}
         >
            Welcome to the digital front row of our love story! 🎉 From "Hello" to "I do," 
-            we’ve giggled, Googled, and grown together—and now we want YOU to be a part 
-            of our next chapter. Like stars destined to align, our paths crossed in the most unexpected way—
+            we’ve giggled, Googled, and grown together and now we want YOU to be a part 
+            of our next chapter. Like stars destined to align, our paths crossed in the most unexpected way
             and now we’re walking hand-in-hand into our happily ever after. We're getting hitched, and you're officially invited 
             to eat cake, shed a happy tear, and dance like no one’s watching! 🕺💃
         </motion.p>
