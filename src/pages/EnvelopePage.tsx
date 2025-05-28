@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./EnvelopePage.css";
+import { HeartsRain } from "../components/HeartsRain";
 
 export default function EnvelopePage() {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ export default function EnvelopePage() {
           <h1>You’re Invited!</h1>
           <p>Tap the envelope to open</p>
         </div>
+        {open && <HeartsRain />}
       </div>
     </div>
   );
