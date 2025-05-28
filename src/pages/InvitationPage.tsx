@@ -50,7 +50,7 @@ export function InvitationPage() {
         <h1 className="fade-in">You Are Cordially Invited</h1>
         <p className="slide-in">Two hearts. One promise. A lifetime of love.</p>
         <p className="slide-in">Join us as we say "I do" and begin our forever together.</p>
-        <p className="slide-in">With love, Sita ❤️ Ram</p>
+        <p className="slide-in">With love, SUSMA ❤️ SUDAN </p>
         <p className="slide-in">Date: 25th September 2025<br />Location: Pokhara, Nepal</p>
         <h2 className="countdown">Countdown to the Big Day</h2>
         <p className="timer">
