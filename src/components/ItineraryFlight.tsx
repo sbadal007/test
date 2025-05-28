@@ -4,8 +4,22 @@ import "./ItineraryFlight.css";
 export default function ItineraryFlight() {
   return (
     <div className="flight-container">
-      <span className="label left"> USA <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Animated-Flag-USA.gif" alt="USA Flag" className="flag" />  </span>
-      <span className="label right"> Nepal <img src="https://cdn.pixabay.com/animation/2023/05/17/02/45/02-45-09-801_512.gif" alt="Nepal Flag" className="flag" /> </span>
+      <span className="label left">
+        USA{" "}
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/4/42/Animated-Flag-USA.gif"
+          alt="USA Flag"
+          className="flag"
+        />
+      </span>
+      <span className="label right">
+        Nepal{" "}
+        <img
+          src="https://cdn.pixabay.com/animation/2023/05/17/02/45/02-45-09-801_512.gif"
+          alt="Nepal Flag"
+          className="flag"
+        />
+      </span>
 
       <svg className="flight-path" viewBox="0 0 1000 200">
         <path
@@ -19,8 +33,7 @@ export default function ItineraryFlight() {
 
         <image
           href="https://media0.giphy.com/media/j6wXZ0PAa4gBw99Kmh/giphy.gif?cid=6c09b952m205leb8mzhme0jhzqakax7vy41o47rend0zc1ph&ep=v1_gifs_search&rid=giphy.gif&ct=g"
-          width="80"
-          height="80"
+          className="plane-icon"
         >
           <animateMotion
             repeatCount="indefinite"
@@ -45,10 +58,7 @@ export default function ItineraryFlight() {
               delay: i * 1.5,
             }}
           >
-            <animateMotion
-              dur="8s"
-              repeatCount="indefinite"
-            >
+            <animateMotion dur="8s" repeatCount="indefinite">
               <mpath href="#flight-path" />
             </animateMotion>
           </motion.circle>
