@@ -3,12 +3,39 @@
   font-family: 'Playfair Display', serif;
   background: linear-gradient(to right, #fff0f5, #ffe6f0);
   color: #333;
+  overflow-y: auto;
+  max-height: 100vh;
+  height: auto;
 }
 
 .welcome-message {
   text-align: center;
-  margin-bottom: 2rem;
-  animation: fadeIn 2s ease-in;
+  padding: 2rem 1rem;
+  background: #fff0f5;
+  border: 3px dashed #f8c3d3;
+  margin: 2rem auto;
+  border-radius: 20px;
+  max-width: 700px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.welcome-message h2 {
+  font-size: 2rem;
+  color: #b30059;
+  margin-bottom: 0.8rem;
+}
+
+.welcome-message p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.emoji-wave {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .itinerary {
@@ -48,11 +75,14 @@
   transform: scale(1.03);
 }
 
-.milestones {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 1.5rem;
-  padding: 0 1rem;
+.rose-bordered {
+  border: 16px solid transparent;
+  border-image: url("/rose-border.png") 30 round;
+  border-radius: 20px;
+  padding: 30px;
+  background-color: #fffafa;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
 }
 
 .milestones {
@@ -74,22 +104,56 @@
   overflow: hidden;
 }
 
+.milestone-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.achievement {
+  flex: 1 1 45%;
+  text-align: center;
+}
+
+.achievement p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #cc3366;
+  margin-top: 0.5rem;
+}
+
+.achievement .icon {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+/* Support for traditional image (milestone-style) */
 .milestone img {
   width: 100%;
   max-width: 320px;
   height: auto;
   object-fit: cover;
   border-radius: 8px;
+  display: block;
+  margin-bottom: 1rem;
 }
 
 .milestone p {
-  margin-top: 12px;
   font-size: 16px;
   line-height: 1.5;
   padding: 0 12px;
   color: #444;
 }
 
+/* Gallery */
 .photo-gallery .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -110,23 +174,7 @@
   transform: scale(1.05);
 }
 
-.invitation-page {
-  overflow-y: auto;
-  max-height: 100vh;
-  height: auto;
-}
-
-.rose-bordered {
-  border: 16px solid transparent;
-  border-image: url("/rose-border.png") 30 round;
-  border-radius: 20px;
-  padding: 30px;
-  background-color: #fffafa;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 40px;
-}
-
-/* Simple fade-in animation */
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -136,4 +184,29 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .milestone-content {
+    flex-direction: column;
+  }
+
+  .achievement {
+    flex: 1 1 100%;
+  }
+
+  .achievement .icon {
+    width: 70px;
+    height: 70px;
+  }
+}
+/* Small inline icon next to accomplishment text */
+.accomplishment-inline-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-left: 6px;
+  margin-right: 2px;
+  object-fit: contain;
 }
