@@ -1,5 +1,5 @@
 import "./InvitationPage.css";
-
+import { HeartsRain } from "../components/HeartsRain";
 
 const milestones = [
   { date: "2018", text: "RN", img: "/story1.jpg" },
@@ -18,7 +18,8 @@ export default function InvitationPage() {
     <div className="invitation-page">
       <section className="welcome-message rose-bordered">
         <h2>Welcome to Our Wedding Invitation</h2>
-        <p>We can’t wait to celebrate with you!</p>
+        <p>We can’t wait to celebrate with you!</p>         
+        {<HeartsRain />}  
       </section>
 
       <section className="itinerary rose-bordered">
@@ -27,7 +28,8 @@ export default function InvitationPage() {
           <li> Engagement Ceremony, September 22nd 2025</li>
           <li> Wedding Ceremony, September 24th 2025</li>
           <li> Reception & Dinner, September 25th 2025</li>
-        </ul>
+        </ul>        
+        {<HeartsRain />}  
       </section>
 
       <section className="our-story rose-bordered">
@@ -40,6 +42,7 @@ export default function InvitationPage() {
             </div>
           ))}
         </div>
+        {<HeartsRain />}  
       </section>
 
       <section className="photo-gallery rose-bordered">
@@ -49,6 +52,7 @@ export default function InvitationPage() {
             <img key={i} src={src} alt={`Gallery image ${i + 1}`} />
           ))}
         </div>
+        {<HeartsRain />}
       </section>
     </div>
   );

@@ -119,11 +119,11 @@
 .rose-bordered {
   border: 16px solid transparent;
   border-image: url("/rose-border.png") 30 round;
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 20px;
+  padding: 30px;
   background-color: #fffafa;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 /* Simple fade-in animation */
