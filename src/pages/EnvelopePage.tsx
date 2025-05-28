@@ -1,19 +1,18 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./EnvelopePage.css";
 import { HeartsRain } from "../components/HeartsRain";
 
-export default function EnvelopePage() {
-  const navigate = useNavigate();
+export default function EnvelopePage({ onOpen }: { onOpen: () => void }) {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
-    setOpen(true);
-    setTimeout(() => navigate("/invite"), 1600);
+    if (!open) {
+      setOpen(true);
+      setTimeout(onOpen, 1600);
+    }
   };
-
-  return (
+ return (
     <div className="envelope-wrapper" onClick={handleOpen}>
       <div className="envelope">
         <motion.div
@@ -31,3 +30,4 @@ export default function EnvelopePage() {
     </div>
   );
 }
+

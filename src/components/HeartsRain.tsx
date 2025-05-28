@@ -1,4 +1,3 @@
-import React from "react";
 import "./HeartsRain.css";
 
 const NUM_HEARTS = 20;

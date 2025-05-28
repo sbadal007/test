@@ -1,0 +1,120 @@
+.itinerary {
+  background: #fff0f5;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 20px rgba(179, 0, 89, 0.15);
+  margin-bottom: 3rem;
+  font-family: 'Playfair Display', serif;
+  color: #b30059;
+  position: relative;
+  overflow: hidden;
+}
+
+.itinerary::before {
+  content: "🕒";
+  font-size: 5rem;
+  position: absolute;
+  top: -20px;
+  right: 15px;
+  opacity: 0.1;
+  user-select: none;
+}
+
+.itinerary h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.itinerary ul {
+  list-style: none;
+  padding: 0;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.itinerary li {
+  background: #ffe6f0;
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  border-left: 6px solid #b30059;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #4a0030;
+  box-shadow: 0 3px 8px rgba(179, 0, 89, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.itinerary li:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(179, 0, 89, 0.25);
+}
+
+/* Our Story Section */
+.our-story {
+  background: #fff8fb;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 20px rgba(179, 0, 89, 0.15);
+  margin-bottom: 3rem;
+  font-family: 'Playfair Display', serif;
+  color: #b30059;
+  text-align: center;
+  position: relative;
+}
+
+.our-story h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.milestones {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+}
+
+.milestones::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.milestone {
+  flex: 0 0 200px;
+  background: #fff0f5;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(179, 0, 89, 0.12);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.milestone:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(179, 0, 89, 0.25);
+}
+
+.milestone img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-bottom: 3px solid #b30059;
+}
+
+.milestone p {
+  padding: 1rem;
+  font-size: 1rem;
+  color: #4a0030;
+  font-weight: 600;
+  line-height: 1.3;
+}

@@ -1,73 +1,55 @@
 import "./InvitationPage.css";
-import { PetalRain } from "../components/PetalRain";
-import { useEffect, useState } from "react";
 
-export function InvitationPage() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
 
-  useEffect(() => {
-    const targetDate = new Date("2025-09-25T00:00:00");
+const milestones = [
+  { date: "2018", text: "RN", img: "/story1.jpg" },
+  { date: "2020", text: "Bachelor of Science in Nursing (BSN) & Bachelor of computer Science (BCS) ", img: "/story2.jpg" },
+  { date: "2025", text: "MSN & MSIT - two degrees, one dream!", img: "/story3.jpg" },
+];
 
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const distance = targetDate.getTime() - now;
+const galleryImages = [
+  "/gallery1.jpg",
+  "/gallery2.jpg",
+  "/gallery3.jpg",
+];
 
-      if (distance < 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((distance / 1000 / 60) % 60);
-      const seconds = Math.floor((distance / 1000) % 60);
-
-      setTimeLeft({ days, hours, minutes, seconds });
-    };
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
+export default function InvitationPage() {
   return (
-    <div className="invite-container">
-      <PetalRain />
-      <audio autoPlay loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3" />
-      </audio>
-      <img
-        src="/IMG_4745.jpg"
-        alt="Couple"
-        className="animated-couple glowing"
-      />
-      <div className="message">
-        <h1 className="fade-in">You Are Cordially Invited</h1>
-        <p className="slide-in">Two hearts. One promise. A lifetime of love.</p>
-        <p className="slide-in">Join us as we say "I do" and begin our forever together.</p>
-        <p className="slide-in">With love, SUSMA ❤️ SUDAN </p>
-        <p className="slide-in">Date: 25th September 2025<br />Location: Pokhara, Nepal</p>
-        <h2 className="countdown">Countdown to the Big Day</h2>
-        <p className="timer">
-          {timeLeft.days} days {timeLeft.hours} hrs {timeLeft.minutes} min {timeLeft.seconds} sec
-        </p>
-        <h3 className="rsvp-header">Kindly RSVP below</h3>
-        <form
-          action="https://formspree.io/f/xnndepon"
-          method="POST"
-          className="rsvp-form decorated-form"
-        >
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="number" name="guests" placeholder="Number of Guests" required />
-          <textarea name="message" placeholder="Message (optional)"></textarea>
-          <button type="submit" className="submit-button">Submit</button>
-        </form>
-      </div>
+    <div className="invitation-page">
+      <section className="welcome-message rose-bordered">
+        <h2>Welcome to Our Wedding Invitation</h2>
+        <p>We can’t wait to celebrate with you!</p>
+      </section>
+
+      <section className="itinerary rose-bordered">
+        <h3>Wedding Itinerary</h3>
+        <ul>
+          <li> Engagement Ceremony, September 22nd 2025</li>
+          <li> Wedding Ceremony, September 24th 2025</li>
+          <li> Reception & Dinner, September 25th 2025</li>
+        </ul>
+      </section>
+
+      <section className="our-story rose-bordered">
+        <h3>Our Story</h3>
+        <div className="milestones">
+          {milestones.map(({ date, text, img }) => (
+            <div key={date} className="milestone">
+              <img src={img} alt={text} />
+              <p><strong>{date}</strong>: {text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="photo-gallery rose-bordered">
+        <h3>Photo Gallery</h3>
+        <div className="gallery-grid">
+          {galleryImages.map((src, i) => (
+            <img key={i} src={src} alt={`Gallery image ${i + 1}`} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

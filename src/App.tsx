@@ -1,16 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import SplashScreen from "./pages/SplashScreen";
 import EnvelopePage from "./pages/EnvelopePage";
-import { InvitationPage } from "./pages/InvitationPage";
+import InvitationPage from "./pages/InvitationPage";
 
-function App() {
+export default function App() {
+  const [stage, setStage] = useState<"splash" | "envelope" | "invitation">("splash");
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<EnvelopePage />} />
-        <Route path="/invite" element={<InvitationPage />} />
-      </Routes>
-    </Router>
+    <>
+      {stage === "splash" && <SplashScreen onFinish={() => setStage("envelope")} />}
+      {stage === "envelope" && <EnvelopePage onOpen={() => setStage("invitation")} />}
+      {stage === "invitation" && <InvitationPage />}
+    </>
   );
 }
-
-export default App;
