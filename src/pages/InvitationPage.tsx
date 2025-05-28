@@ -42,7 +42,7 @@ export function InvitationPage() {
         <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3" />
       </audio>
       <img
-        src="https://i.ibb.co/p1YykWc/animated-couple.gif"
+        src="/IMG_4745.jpg"
         alt="Couple"
         className="animated-couple glowing"
       />
