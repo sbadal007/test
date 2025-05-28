@@ -8,10 +8,8 @@ export default function EnvelopePage() {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
-    if (!open) {
-      setOpen(true);
-      setTimeout(() => navigate("/invite"), 1800);
-    }
+    setOpen(true);
+    setTimeout(() => navigate("/invite"), 1600);
   };
 
   return (
@@ -19,13 +17,13 @@ export default function EnvelopePage() {
       <div className="envelope">
         <motion.div
           className="flap"
-          initial={false}
-          animate={open ? { rotateX: -160 } : { rotateX: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
+          initial={{ rotateX: 0 }}
+          animate={open ? { rotateX: -120 } : {}}
+          transition={{ duration: 1, ease: "easeInOut" }}
         />
         <div className="letter">
           <h1>You’re Invited!</h1>
-          <p>Click the envelope to open</p>
+          <p>Tap the envelope to open</p>
         </div>
       </div>
     </div>
