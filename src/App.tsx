@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import EnvelopePage from "./pages/EnvelopePage";
+import { EnvelopePage } from "./pages/EnvelopePage";
 import { InvitationPage } from "./pages/InvitationPage";
 
 function App() {
