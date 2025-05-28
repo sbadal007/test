@@ -72,8 +72,8 @@ export default function InvitationPage() {
         <h3>SUDAN    Weds    SUSMA </h3>
         <ul>
           <li>Engagement Ceremony – September 22nd, 2025</li>
-          <li>Wedding Ceremony – September 24th, 2025</li>
-          <li>Reception & Dinner – September 25th, 2025</li>
+          <li>Wedding Ceremony – September 25th, 2025</li>
+          <li>Reception & Dinner – September 26th, 2025</li>
         </ul>
         <ItineraryFlight />
       </section>
