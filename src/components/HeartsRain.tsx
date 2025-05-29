@@ -1,6 +1,6 @@
 import "./HeartsRain.css";
 
-const NUM_HEARTS = 20;
+const NUM_HEARTS = 10;
 
 function random(min: number, max: number) {
   return Math.random() * (max - min) + min;

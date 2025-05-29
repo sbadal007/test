@@ -1,17 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import SplashScreen from "./pages/SplashScreen";
 import EnvelopePage from "./pages/EnvelopePage";
 import InvitationPage from "./pages/InvitationPage";
-import YoutubeAudioPlayer from "./components/YoutubeAudioPlayer";
 
 export default function App() {
   const [stage, setStage] = useState<"splash" | "envelope" | "invitation">("splash");
   const [playMusic, setPlayMusic] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const handleEnvelopeOpen = () => {
     setPlayMusic(true); // Start background music
     setStage("invitation"); // Move to invitation page
   };
+
+  useEffect(() => {
+    if (playMusic && audioRef.current) {
+      audioRef.current.play().catch((error) => {
+        console.error("Error playing audio:", error);
+      });
+    }
+  }, [playMusic]);
 
   return (
     <>
@@ -19,8 +27,8 @@ export default function App() {
       {stage === "envelope" && <EnvelopePage onOpen={handleEnvelopeOpen} />}
       {stage === "invitation" && <InvitationPage />}
 
-      {/* Play YouTube audio in background */}
-      {playMusic && <YoutubeAudioPlayer videoId="aMIuW7hXVNU" play={true} />}
+      {/* Background music */}
+      <audio ref={audioRef} src="/background-music.mp4" loop />
     </>
   );
 }

@@ -10,16 +10,17 @@
   height: 200px;
 }
 
-/* Plane icon styling */
-.plane-icon {
-  width: 80px;
-  height: 80px;
-}
+@media (max-width: 600px) {
+  .flight-path {
+    height: 350px;
+  }
 
-@media (max-width: 768px) {
-  .plane-icon {
-    width: 120px;
-    height: 120px;
+  .flag {
+    width: 32px;
+  }
+
+  .label {
+    font-size: 1.1rem;
   }
 }
 
@@ -27,28 +28,28 @@
 .label {
   position: absolute;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1rem; /* will be overridden by h3 anyway */
   color: #d45c8c;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 4px 8px;
-  border-radius: 6px;
+  background: none; /* removed background */
+  padding: 0;        /* removed padding */
+  border-radius: 0;  /* removed border radius */
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
 .label.left {
-  top: 125px;
-  left: 30px;
+  top: 70px;
+  left: 5px;
 }
 
 .label.right {
-  top: 125px;
-  right: 30px;
+  top: 70px;
+  right: -10px;
 }
 
 .flag {
-  width: 24px;
+  width: 50px;
   height: auto;
-  border-radius: 3px;
+  border-radius: 1px;
 }
