@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HeartsRain } from "../components/HeartsRain";
 import "./EnvelopeIntroPage.css";
 
 export default function EnvelopeIntroPage({ onOpen }: { onOpen: () => void }) {
   const [isTilted, setIsTilted] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     const handleOrientation = (event: DeviceOrientationEvent) => {
@@ -19,7 +20,10 @@ export default function EnvelopeIntroPage({ onOpen }: { onOpen: () => void }) {
   const handleTap = () => {
     if (isTilted && !isOpen) {
       setIsOpen(true);
-      setTimeout(onOpen, 3500); // wait 10 seconds before moving to next screen
+      audioRef.current?.play().catch((err) => {
+        console.log("Autoplay failed:", err);
+      });
+      setTimeout(onOpen, 10000);
     }
   };
 
@@ -35,12 +39,14 @@ export default function EnvelopeIntroPage({ onOpen }: { onOpen: () => void }) {
           )}
           {isOpen && (
             <div className="invitation-message">
-              💌 You are invited to SUDAN and SUSMA wedding!
+              💌 You are invited to our wedding!
             </div>
           )}
         </div>
         {isOpen && <HeartsRain />}
       </div>
+      {/* Hidden audio player */}
+      <audio ref={audioRef} src="/background-music.mp4" loop />
     </div>
   );
 }
