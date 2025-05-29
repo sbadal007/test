@@ -23,7 +23,7 @@ export default function EnvelopeIntroPage({ onOpen }: { onOpen: () => void }) {
       audioRef.current?.play().catch((err) => {
         console.log("Autoplay failed:", err);
       });
-      setTimeout(onOpen, 10000);
+      setTimeout(onOpen, 4500);
     }
   };
 
@@ -39,7 +39,7 @@ export default function EnvelopeIntroPage({ onOpen }: { onOpen: () => void }) {
           )}
           {isOpen && (
             <div className="invitation-message">
-              💌 You are invited to our wedding!
+              💌 You are invited to SUDAN and SUSMA wedding!
             </div>
           )}
         </div>
