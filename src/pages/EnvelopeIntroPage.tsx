@@ -3,7 +3,7 @@ import { HeartsRain } from "../components/HeartsRain";
 import "./EnvelopeIntroPage.css";
 
 export default function EnvelopeIntroPage({ onOpen }: { onOpen: () => void }) {
-  const [isTilted, setIsTilted] = useState(false);
+  const [isTilted, setIsTilted] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
