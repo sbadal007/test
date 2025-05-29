@@ -8,16 +8,16 @@ const milestones = [
   { date: "2020",  text: (
       <>
         Bachelor of Computer Science (BCS) ! I did it.        
-        <br />
+        <br /> <br />
         Bachelor of Science in Nursing (BSN) ! She followed me.
       </>
     ), img: "/story2.jpg" },
   { date: "2025", text: (
       <>
         MSIT ! I did it again.        
-        <br />
+        <br /> <br />
         MSN ! and She followed me again.
-        <br />
+        <br /> <br />
         <strong> It's just two degrees, one dream! </strong>
       </>
     ), img: "/story3.jpg" },
@@ -52,16 +52,16 @@ export default function InvitationPage() {
             we’ve giggled, Googled, and grown together and now we want YOU to be a part 
             of our next chapter. Like stars destined to align, our paths crossed in the most unexpected way
             and now we’re walking hand-in-hand into our happily ever after. We're getting hitched, and you're officially invited 
-            to eat cake, shed a happy tear, and dance like no one’s watching! 🕺💃
+            to eat cake, shed a happy tear, and dance like no one’s watching! <h1>🕺💃</h1>
         </motion.p>
 
         <motion.div
           initial={{ rotate: 0 }}
-          animate={{ rotate: [0, -20, 20, -10, 10, 0] }}
-          transition={{ delay: 1.2, duration: 1.5 }}
+          animate={{ rotate: [0, -20, 20, -20, 20, 0] }}
+          transition={{ delay: 1.2, duration: 2 }}
           className="emoji-wave"
         >
-          👋
+          🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏
         </motion.div>
 
         <HeartsRain />

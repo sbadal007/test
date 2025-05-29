@@ -1,11 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, RefObject } from "react";
 import { HeartsRain } from "../components/HeartsRain";
 import "./EnvelopeIntroPage.css";
 
-export default function EnvelopeIntroPage({ onOpen }: { onOpen: () => void }) {
+export default function EnvelopeIntroPage({
+  onOpen,
+  audioRef,
+}: {
+  onOpen: () => void;
+  audioRef: RefObject<HTMLAudioElement>;
+}) {
   const [isTilted, setIsTilted] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     const handleOrientation = (event: DeviceOrientationEvent) => {
@@ -14,15 +19,18 @@ export default function EnvelopeIntroPage({ onOpen }: { onOpen: () => void }) {
       }
     };
     window.addEventListener("deviceorientation", handleOrientation);
-    return () => window.removeEventListener("deviceorientation", handleOrientation);
+    return () =>
+      window.removeEventListener("deviceorientation", handleOrientation);
   }, []);
 
   const handleTap = () => {
     if (isTilted && !isOpen) {
       setIsOpen(true);
-      audioRef.current?.play().catch((err) => {
-        console.log("Autoplay failed:", err);
-      });
+
+      // Play music immediately
+      audioRef.current?.play().catch(() => {});
+
+      // Wait for envelope open animation, then move to splash
       setTimeout(onOpen, 4500);
     }
   };
@@ -38,15 +46,13 @@ export default function EnvelopeIntroPage({ onOpen }: { onOpen: () => void }) {
             </div>
           )}
           {isOpen && (
-            <div className="invitation-message">
-              💌 You are invited to SUDAN and SUSMA wedding!
+            <div className="invite-message">
+              💌 You are invited to SUDAN and SUSMA wedding celebration!
             </div>
           )}
         </div>
         {isOpen && <HeartsRain />}
       </div>
-      {/* Hidden audio player */}
-      <audio ref={audioRef} src="/background-music.mp4" loop />
     </div>
   );
 }
