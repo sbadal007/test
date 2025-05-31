@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./InvitationPage.css";
 import { HeartsRain } from "../components/HeartsRain";
@@ -15,9 +16,9 @@ const milestones = [
   { date: "2025", text: (
       <>
         MSIT ! I did it again.        
-        <br /> <br />
+        <br /><br />
         MSN ! and She followed me again.
-        <br /> <br />
+        <br /><br />
         <strong> It's just two degrees, one dream! </strong>
       </>
     ), img: "/story3.jpg" },
@@ -27,9 +28,20 @@ const galleryImages = [
   "/gallery1.jpg",
   "/gallery2.jpg",
   "/gallery3.jpg",
+  "/gallery4.jpg",
+  "/gallery5.jpg",
+  "/gallery6.jpg",
 ];
 
-export default function InvitationPage() {
+export default function InvitationPage({ goToIntro }: { goToIntro: () => void }) {
+  const [isStandaloneBrowser, setIsStandaloneBrowser] = useState(true);
+
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor;
+    const isInAppBrowser = /FBAN|FBAV|Instagram|Messenger/i.test(ua);
+    setIsStandaloneBrowser(!isInAppBrowser);
+  }, []);
+
   return (
     <div className="invitation-page">
 
@@ -61,7 +73,7 @@ export default function InvitationPage() {
           transition={{ delay: 1.2, duration: 2 }}
           className="emoji-wave"
         >
-          🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏
+          🙏🙏🙏🙏🙏🙏🙏
         </motion.div>
 
         <HeartsRain />
@@ -102,6 +114,15 @@ export default function InvitationPage() {
         </div>
         <HeartsRain />
       </section>
+      {/* 🔘 Close Button (only in standalone browser) */}
+      {isStandaloneBrowser && (
+        <div className="close-button-container">
+          <button onClick={goToIntro}>
+            🙏 Close Invitation
+          </button>
+        </div>
+      )}
+      <br /> <br /> <br />
     </div>
   );
 }

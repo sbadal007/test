@@ -1,90 +1,119 @@
 .envelope-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  width: 100%;
   height: 100vh;
-  background: #fff0f5;
+  background-color: #fff;
   overflow: hidden;
-  position: relative;
-}
-
-.envelope {
-  position: relative;
-  width: 320px;
-  height: 200px;
-  background: #ffe0ec;
-  border-radius: 12px;
-  border: 2px solid #fff;
-  box-shadow: 0 0 20px rgba(255, 192, 203, 0.6);
-  animation: glitterBorder 2s linear infinite;
-  transition: all 0.5s ease;
-}
-
-.envelope.opened .flap {
-  transform: rotateX(180deg);
-}
-
-.flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(135deg, #d8d6d6, #db9b9b);
-  clip-path: polygon(0 0, 50% 100%, 100% 0); /* Proper V shape */
-  transform-origin: top center;
-  transition: transform 1s ease-in-out;
-  z-index: 2;
-  border-bottom: 2px solid #554d4d;
-}
-
-.message-inside {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #ffe0ec;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
-  padding-top: 40px;
+  cursor: pointer;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.tap-container {
   text-align: center;
 }
 
-.center-message {
-  font-size: 1.1rem;
+.tap-message {
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #d63384;
-  animation: pulse 2s infinite;
+  color: #444;
+  margin-bottom: 1rem;
 }
 
-.invitation-message {
-  font-size: 1.4rem;
+.ganesh-image {
+  width: 80vw;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.envelope-content {
+  position: relative;
+  width: 80vw;
+  max-width: 400px;
+}
+
+.envelope-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.invite-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: "Noto Sans Devanagari", "Kalpurush", serif;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
   font-weight: bold;
-  color: #b03060;
-  animation: fadeIn 1.5s ease-in;
-  padding: 0 1rem;
+  white-space: pre-line;
+  background: transparent;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  color: transparent;
+  background-image: linear-gradient(45deg, #f8e182, #f5c14e, #d89f34);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 1px 1px 1px #b87c1b;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 1; }
+.envelope.opened .invite-text {
+  animation: fadeInText 2s ease-in-out 1.5s forwards;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes glitterBorder {
-  0% {
-    box-shadow: 0 0 10px #ffb6c1, 0 0 20px #ffc0cb;
+/* Animation */
+@keyframes fadeInText {
+  to {
+    opacity: 1;
   }
-  50% {
-    box-shadow: 0 0 25px #ff69b4, 0 0 40px #ffa6c9;
+}
+
+/* 📱 Mobile-specific font adjustments */
+@media screen and (max-width: 480px) {
+  .invite-text {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
   }
-  100% {
-    box-shadow: 0 0 10px #ffb6c1, 0 0 20px #ffc0cb;
+
+  .tap-message {
+    font-size: 1rem;
+  }
+
+  .ganesh-image {
+    width: 90vw;
+  }
+
+  .envelope-content {
+    width: 90vw;
+  }
+}
+
+/* 📱 Larger mobile screens (phablets/small tablets) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .invite-text {
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+
+  .ganesh-image {
+    width: 85vw;
+  }
+
+  .envelope-content {
+    width: 85vw;
   }
 }

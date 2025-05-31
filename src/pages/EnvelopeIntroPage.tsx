@@ -11,48 +11,76 @@ export default function EnvelopeIntroPage({
 }) {
   const [isTilted, setIsTilted] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [hasTapped, setHasTapped] = useState(false);
 
   useEffect(() => {
     const handleOrientation = (event: DeviceOrientationEvent) => {
-      if (event.gamma && Math.abs(event.gamma) > 25) {
+      if (event.gamma && Math.abs(event.gamma) > 10) {
         setIsTilted(true);
       }
     };
-    window.addEventListener("deviceorientation", handleOrientation);
-    return () =>
+
+    const enableOrientation = async () => {
+      if (
+        typeof DeviceOrientationEvent !== "undefined" &&
+        typeof (DeviceOrientationEvent as any).requestPermission === "function"
+      ) {
+        try {
+          const response = await (DeviceOrientationEvent as any).requestPermission();
+          if (response === "granted") {
+            window.addEventListener("deviceorientation", handleOrientation);
+          }
+        } catch (err) {
+          console.warn("Device orientation permission denied:", err);
+        }
+      } else {
+        window.addEventListener("deviceorientation", handleOrientation);
+      }
+    };
+
+    enableOrientation();
+    return () => {
       window.removeEventListener("deviceorientation", handleOrientation);
+    };
   }, []);
 
   const handleTap = () => {
     if (isTilted && !isOpen) {
+      setHasTapped(true);
       setIsOpen(true);
-
-      // Play music immediately
       audioRef.current?.play().catch(() => {});
-
-      // Wait for envelope open animation, then move to splash
-      setTimeout(onOpen, 4500);
+      setTimeout(onOpen, 8500);
     }
   };
 
   return (
     <div className="envelope-wrapper" onClick={handleTap}>
-      <div className={`envelope ${isOpen ? "opened" : ""}`}>
-        <div className="flap" />
-        <div className="message-inside">
-          {!isOpen && (
-            <div className="center-message">
-              📱 Tilt your phone & tap to open this message
-            </div>
-          )}
-          {isOpen && (
-            <div className="invite-message">
-              💌 You are invited to SUDAN and SUSMA wedding celebration!
-            </div>
-          )}
+      {!hasTapped ? (
+        <div className="tap-container">
+          <div className="tap-message">📱 Tap to open</div>
+          <img src="/Ganesh.jpg" alt="Ganesh" className="ganesh-image" />
         </div>
-        {isOpen && <HeartsRain />}
-      </div>
+      ) : (
+        <div className={`envelope ${isOpen ? "opened" : ""}`}>
+          <div className="envelope-content">
+            <img
+              src="/Red-envelop.jpg"
+              alt="Envelope"
+              className="envelope-image"
+            />
+            <div className="invite-text">
+              <br />
+              <br />
+             You are invited to
+              <br />
+              SUDAN and SUSMA
+              <br />
+              wedding celebration!
+            </div>
+          </div>
+          {isOpen && <HeartsRain />}
+        </div>
+      )}
     </div>
   );
 }
